@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 
-import Navbar from './actions';
+import Navbar from '../../components/navbar';
 import {
   TrendingUp,
   Check,
