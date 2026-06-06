@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 
 import Navbar from '../../components/navbar';
+import VeltenStats from '../../components/navbar2';
 import {
   TrendingUp,
   Check,
@@ -17,7 +18,6 @@ import {
   FileLock2,
   Download,
   Mail,
-  Star,
   Phone,
   CircleAlert,
 } from 'lucide-react';
@@ -86,6 +86,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <VeltenStats />
 
       <section className="w-full bg-[#0A0F1E] py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
@@ -283,19 +285,19 @@ export default function Home() {
                 id: 1,
                 image: '/image/consultoria1.jpg',
                 quote:
-                  'Saímos do improviso para uma rotina de gestão clara. Hoje a empresa funciona sem depender de mim o tempo todo.',
+                  '',
               },
               {
                 id: 2,
                 image: '/image/consultoria2.jpg',
                 quote:
-                  'A Velten estruturou nossos processos e o time ganhou autonomia. O crescimento deixou de ser sorte e virou método.',
+                  '',
               },
               {
                 id: 3,
                 image: '/image/consultoria3.jpg',
                 quote:
-                  'Metas claras, indicadores e liderança preparada. Em poucos meses a operação ficou previsível e escalável.',
+                  '',
               },
             ].map(({ id, image, quote }) => (
               <figure
@@ -311,11 +313,6 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#111729]/80 via-[#111729]/10 to-transparent" />
                 </div>
                 <div className="flex flex-1 flex-col p-7">
-                  <div className="mb-4 flex items-center gap-1 text-[#CEBEA6]">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-current" strokeWidth={0} />
-                    ))}
-                  </div>
                   <blockquote className="flex-1 leading-relaxed text-[#F6F1F1]/75">
                     &ldquo;{quote}&rdquo;
                   </blockquote>
