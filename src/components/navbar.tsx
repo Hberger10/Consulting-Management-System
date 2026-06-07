@@ -51,13 +51,30 @@ export default function Navbar() {
       >
         <nav className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex h-20 items-center justify-between">
-            <Link href="/" className="group flex items-center">
-              <img
-                src="/image/final.jpg"
-                alt="Velten"
-                className="h-20 w-auto object-contain"
-              />
-            </Link>
+            <Link href="/" className="group flex select-none flex-col items-start leading-none">
+  <span
+    className="bg-gradient-to-b from-[#FCFBF8] via-[#EFE5D9] to-[#CEBEA6] bg-clip-text text-transparent"
+    style={{
+      fontFamily: "'Playfair Display', Georgia, serif",
+      fontWeight: 500,
+      fontSize: '25px',
+      letterSpacing: '0.36em',
+      textIndent: '0.36em',
+    }}
+  >
+    VELTEN
+  </span>
+  <span className="mt-1.5 flex w-full items-center gap-2">
+    <span className="h-px flex-1 bg-gradient-to-r from-transparent via-[#CEBEA6]/50 to-transparent" />
+    <span
+      className="whitespace-nowrap font-medium uppercase text-[#CEBEA6]"
+      style={{ fontSize: '8px', letterSpacing: '0.42em', textIndent: '0.42em' }}
+    >
+      Consultoria Empresarial
+    </span>
+    <span className="h-px flex-1 bg-gradient-to-r from-transparent via-[#CEBEA6]/50 to-transparent" />
+  </span>
+</Link>
 
             <div className="hidden items-center gap-9 text-sm font-medium text-[#F6F1F1]/70 md:flex">
               {navLinks.map((link) => (

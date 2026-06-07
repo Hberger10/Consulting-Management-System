@@ -90,12 +90,12 @@ export default function VeltenStats() {
       
       <div className="pointer-events-none absolute inset-0">
         <img
-          src="/image/ane.jpg" //enviar foto da equipe acelerando o crescimento de uma empresa cliente
+          src="/image/ane3.jpg" //enviar foto da equipe acelerando o crescimento de uma empresa cliente
           alt=""
-          className="absolute right-0 top-0 h-full w-full object-cover object-center opacity-25 grayscale lg:w-2/3"
+          className="absolute right-0 top-0 h-full w-full object-cover object-[center_35%] opacity-65 grayscale lg:w-2/3"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B0F1A] via-[#0B0F1A]/95 to-[#0B0F1A]/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F1A] via-transparent to-[#0B0F1A]/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B0F1A] via-[#0B0F1A]/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F1A] via-transparent to-[#0B0F1A]/50" />
       </div>
       <div className="pointer-events-none absolute -left-20 top-1/3 h-[26rem] w-[26rem] rounded-full bg-[#404D74]/20 blur-[130px]" />
 
