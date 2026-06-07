@@ -90,7 +90,7 @@ export default function VeltenStats() {
       
       <div className="pointer-events-none absolute inset-0">
         <img
-          src="/equipe/acelerando.jpg" //enviar foto da equipe acelerando o crescimento de uma empresa cliente
+          src="/image/ane.jpg" //enviar foto da equipe acelerando o crescimento de uma empresa cliente
           alt=""
           className="absolute right-0 top-0 h-full w-full object-cover object-center opacity-25 grayscale lg:w-2/3"
         />

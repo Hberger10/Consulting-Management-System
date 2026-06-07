@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X, Lock, ArrowRight } from 'lucide-react';
 
-const serif = { fontFamily: "'Playfair Display', Georgia, serif" } as const;
 
 const navLinks = [
   { label: 'Pilares', href: '#servicos' },
@@ -52,19 +51,12 @@ export default function Navbar() {
       >
         <nav className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex h-20 items-center justify-between">
-            <Link href="/" className="group flex items-center gap-2.5">
-              <span
-                className="grid h-9 w-9 place-items-center rounded-md border border-[#CEBEA6]/40 bg-gradient-to-br from-[#404D74]/40 to-[#111729] text-xl font-bold text-[#CEBEA6]"
-                style={serif}
-              >
-                V
-              </span>
-              <span
-                className="text-2xl font-bold tracking-[0.18em] text-[#FCFBF8]"
-                style={serif}
-              >
-                ELTEN
-              </span>
+            <Link href="/" className="group flex items-center">
+              <img
+                src="/image/final.jpg"
+                alt="Velten"
+                className="h-20 w-auto object-contain"
+              />
             </Link>
 
             <div className="hidden items-center gap-9 text-sm font-medium text-[#F6F1F1]/70 md:flex">
