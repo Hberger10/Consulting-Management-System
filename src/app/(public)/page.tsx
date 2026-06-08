@@ -3,6 +3,7 @@ import { ArrowUpRight } from 'lucide-react';
 
 import Navbar from '../../components/navbar';
 import VeltenStats from '../../components/navbar2';
+import VideoSection from '../../components/video_section';
 import {
   TrendingUp,
   Check,
@@ -88,7 +89,7 @@ export default function Home() {
       </section>
 
       <VeltenStats />
-
+      <VideoSection />
       <section className="w-full bg-[#0A0F1E] py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="mb-16 max-w-3xl">
