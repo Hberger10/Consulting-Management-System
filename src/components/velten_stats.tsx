@@ -2,8 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-const serif = { fontFamily: "'Playfair Display', Georgia, serif" } as const;
-
 type Stat = {
   target: number;
   suffix?: string;
@@ -47,10 +45,7 @@ function StatItem({ stat, start }: { stat: Stat; start: boolean }) {
     <div className="flex gap-5">
       <span className="mt-2 block h-16 w-1 shrink-0 -skew-x-12 bg-gradient-to-b from-[#CEBEA6] to-[#EFE5D9]" />
       <div>
-        <p
-          className="text-5xl font-bold leading-none text-[#FCFBF8] lg:text-6xl"
-          style={serif}
-        >
+        <p className="font-serif text-5xl font-bold leading-none text-[#FCFBF8] lg:text-6xl">
           <span className="text-[#CEBEA6]">+</span>
           {value.toLocaleString('pt-BR')}
           {stat.suffix && <span className="text-[#FCFBF8]">{stat.suffix}</span>}
@@ -86,11 +81,10 @@ export default function VeltenStats() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-[#0B0F1A] py-24 lg:py-32">
-      
+    <section aria-label="Estatísticas da Velten" className="relative overflow-hidden bg-[#0B0F1A] py-24 lg:py-32">
       <div className="pointer-events-none absolute inset-0">
         <img
-          src="/image/ane3.jpg" //enviar foto da equipe acelerando o crescimento de uma empresa cliente
+          src="/image/ane3.jpg"
           alt=""
           className="absolute right-0 top-0 h-full w-full object-cover object-[center_35%] opacity-65 grayscale lg:w-2/3"
         />
@@ -100,10 +94,7 @@ export default function VeltenStats() {
       <div className="pointer-events-none absolute -left-20 top-1/3 h-[26rem] w-[26rem] rounded-full bg-[#404D74]/20 blur-[130px]" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <h2
-          className="max-w-3xl text-4xl font-bold leading-[1.05] text-[#FCFBF8] [text-wrap:balance] sm:text-5xl lg:text-6xl"
-          style={serif}
-        >
+        <h2 className="font-serif max-w-3xl text-4xl font-bold leading-[1.05] text-[#FCFBF8] [text-wrap:balance] sm:text-5xl lg:text-6xl">
           A Velten está{' '}
           <span className="italic text-[#CEBEA6]">estruturando</span> o
           empreendedorismo no Brasil.
