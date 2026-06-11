@@ -6,7 +6,7 @@ import { Play } from 'lucide-react';
 const serif = { fontFamily: "'Playfair Display', Georgia, serif" } as const;
 
 
-const VIDEO_ID = '';
+
 
 export default function VideoSection() {
   const [playing, setPlaying] = useState(false);
@@ -42,11 +42,7 @@ export default function VideoSection() {
         >
           {!playing ? (
             <>
-              <img
-                src="/image/ane.jpg"
-                alt="Poster do vídeo"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
+              
               <span
                 className="absolute inset-0 transition-transform duration-700 group-hover:scale-[1.03]"
                 style={{
@@ -75,7 +71,7 @@ export default function VideoSection() {
           ) : (
             <iframe
               title="Vídeo Velten"
-              src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&rel=0`}
+              src="https://www.youtube.com/embed/J6ZD6wmWp7o?autoplay=1"
               allow="autoplay; encrypted-media"
               allowFullScreen
               className="absolute inset-0 h-full w-full"
