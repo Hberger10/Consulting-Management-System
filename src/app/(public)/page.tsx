@@ -10,6 +10,7 @@ import DepoimentosSection from '../../components/depoimentos_section';
 import PlataformaSection from '../../components/plataforma_section';
 import PageFooter from '../../components/page_footer';
 import AceleradorSection from '../../components/acelerador_section';
+import MediaCarouselSection from '../../components/carousel_section';
 
 export default function Home() {
   return (
@@ -76,13 +77,14 @@ export default function Home() {
       </section>
 
       <VeltenStats />
-
       <VideoSection />
       <DiagnosticoSection />
+      <MediaCarouselSection />
       <ServicosSection />
       <DepoimentosSection />
       <AceleradorSection />
       <PlataformaSection />
+      
       <PageFooter />
     </div>
   );
