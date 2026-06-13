@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Mail, Phone } from 'lucide-react';
+import { Mail, Phone, AtSign } from 'lucide-react';
 
 export default function PageFooter() {
   return (
@@ -61,7 +61,15 @@ export default function PageFooter() {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-[#CEBEA6]/70" strokeWidth={1.75} />
-                +55 (00) 0000-0000
+                +55 (27) 99533-1354
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail className="h-4 w-4 text-[#CEBEA6]/70" strokeWidth={1.75} />
+                veltenconsultoria@gmail.com
+              </li>
+              <li className="flex items-center gap-2">
+                <AtSign className="h-4 w-4 text-[#CEBEA6]/70" strokeWidth={1.75} />
+                veltenconsultoriaetreinamentos
               </li>
             </ul>
           </div>

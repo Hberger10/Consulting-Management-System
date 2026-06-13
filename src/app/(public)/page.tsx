@@ -9,6 +9,7 @@ import ServicosSection from '../../components/servicos_section';
 import DepoimentosSection from '../../components/depoimentos_section';
 import PlataformaSection from '../../components/plataforma_section';
 import PageFooter from '../../components/page_footer';
+import AceleradorSection from '../../components/acelerador_section';
 
 export default function Home() {
   return (
@@ -75,10 +76,12 @@ export default function Home() {
       </section>
 
       <VeltenStats />
+
       <VideoSection />
       <DiagnosticoSection />
       <ServicosSection />
       <DepoimentosSection />
+      <AceleradorSection />
       <PlataformaSection />
       <PageFooter />
     </div>
