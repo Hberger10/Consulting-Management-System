@@ -19,12 +19,18 @@ const SLIDES: Slide[] = [
 ];
 
 const DURATION = 5000;
+const TRANSITION_MS = 600;
 const ACTIVE_W = 680;
 const PEEK_W = 300;
 const GAP = 8;
 const STEP = PEEK_W + GAP;
 const DRAG_THRESHOLD = 60;
 const CARD_H = 560;
+
+// Clones dos primeiros cards anexados ao fim para o loop infinito.
+// Precisa cobrir os "peeks" visíveis à direita do card ativo.
+const CLONES = 3;
+const RENDER_SLIDES: Slide[] = [...SLIDES, ...SLIDES.slice(0, CLONES)];
 
 
 function BrandLogo() {
@@ -36,28 +42,17 @@ function BrandLogo() {
   );
 }
 
-function ReadMore() {
-  return (
-    <span className="mt-4 inline-flex items-center gap-2.5 text-sm font-semibold text-white">
-      <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/70">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
-          <path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </span>
-      Read more
-    </span>
-  );
-}
-
 function CarouselCard({
   slide,
   isActive,
   offset,
+  noTransition,
   onSelect,
 }: {
   slide: Slide;
   isActive: boolean;
   offset: number;
+  noTransition: boolean;
   onSelect: () => void;
 }) {
   const isLeft = offset < 0;
@@ -74,8 +69,9 @@ function CarouselCard({
         width: isActive ? ACTIVE_W : PEEK_W,
         transformOrigin: 'center center',
         transform: `translateZ(${translateZ}px) rotateY(${rotateY}deg)`,
-        transition:
-          'width 0.6s cubic-bezier(0.65, 0, 0.2, 1), transform 0.6s cubic-bezier(0.65, 0, 0.2, 1), box-shadow 0.6s cubic-bezier(0.65, 0, 0.2, 1)',
+        transition: noTransition
+          ? 'none'
+          : 'width 0.6s cubic-bezier(0.65, 0, 0.2, 1), transform 0.6s cubic-bezier(0.65, 0, 0.2, 1), box-shadow 0.6s cubic-bezier(0.65, 0, 0.2, 1)',
         boxShadow: isActive
           ? '0 45px 90px -30px rgba(6, 22, 24, 0.75)'
           : '0 20px 50px -28px rgba(8, 47, 50, 0.4)',
@@ -109,8 +105,6 @@ function CarouselCard({
         >
           {slide.title}
         </h3>
-        <p className="mt-2 text-sm font-medium text-white/70">{slide.time}</p>
-        {isActive && <ReadMore />}
       </div>
     </button>
   );
@@ -122,6 +116,7 @@ export default function MediaCarouselSection() {
   const [active, setActive] = useState(0);
   const [dragging, setDragging] = useState(false);
   const [dragDx, setDragDx] = useState(0);
+  const [noTransition, setNoTransition] = useState(false);
 
   const timerRef = useRef<number | null>(null);
   const startXRef = useRef(0);
@@ -137,13 +132,35 @@ export default function MediaCarouselSection() {
   
   useEffect(() => {
     if (dragging) return;
+    // Na posição clonada (SLIDES.length) quem comanda é o efeito de wrap.
+    if (active >= SLIDES.length) return;
     timerRef.current = window.setTimeout(() => {
-      setActive((a) => (a + 1) % SLIDES.length);
+      setActive((a) => a + 1);
     }, DURATION);
     return () => {
       if (timerRef.current) window.clearTimeout(timerRef.current);
     };
   }, [active, dragging]);
+
+  // Loop infinito: ao chegar no clone do primeiro card, deixa a animação
+  // terminar e então reseta instantaneamente (sem transição) para o card real.
+  useEffect(() => {
+    if (active !== SLIDES.length) return;
+    const id = window.setTimeout(() => {
+      setNoTransition(true);
+      setActive(0);
+    }, TRANSITION_MS);
+    return () => window.clearTimeout(id);
+  }, [active]);
+
+  // Reabilita a transição após o navegador pintar a posição resetada.
+  useEffect(() => {
+    if (!noTransition) return;
+    const raf = requestAnimationFrame(() => {
+      requestAnimationFrame(() => setNoTransition(false));
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [noTransition]);
 
   
   const onPointerDown = (e: React.PointerEvent) => {
@@ -232,7 +249,8 @@ export default function MediaCarouselSection() {
               gap: GAP,
               transformStyle: 'preserve-3d',
               transform: `translateX(${translateX}px)`,
-              transition: dragging ? 'none' : 'transform 0.6s cubic-bezier(0.65, 0, 0.2, 1)',
+              transition:
+                dragging || noTransition ? 'none' : 'transform 0.6s cubic-bezier(0.65, 0, 0.2, 1)',
               cursor: dragging ? 'grabbing' : 'grab',
               touchAction: 'pan-y',
             }}
@@ -242,12 +260,13 @@ export default function MediaCarouselSection() {
             onPointerLeave={onPointerUp}
             onWheel={onWheel}
           >
-            {SLIDES.map((slide, index) => (
+            {RENDER_SLIDES.map((slide, index) => (
               <CarouselCard
-                key={slide.id}
+                key={`${slide.id}-${index}`}
                 slide={slide}
                 isActive={index === active}
                 offset={index - active}
+                noTransition={noTransition}
                 onSelect={() => handleSelect(index)}
               />
             ))}

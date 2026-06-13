@@ -79,8 +79,9 @@ export default function Home() {
       <VeltenStats />
       <VideoSection />
       <DiagnosticoSection />
-      <MediaCarouselSection />
+      
       <ServicosSection />
+      <MediaCarouselSection />
       <DepoimentosSection />
       <AceleradorSection />
       <PlataformaSection />
