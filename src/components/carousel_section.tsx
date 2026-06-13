@@ -18,12 +18,13 @@ const SLIDES: Slide[] = [
   { id: 5, title: 'Best Beaches for Beginner Surfers', time: '2 days ago', image: '/image/consultoria2.jpg' },
 ];
 
-const DURATION = 5000; 
-const ACTIVE_W = 560;
-const PEEK_W = 224;
-const GAP = 18;
+const DURATION = 5000;
+const ACTIVE_W = 680;
+const PEEK_W = 300;
+const GAP = 8;
 const STEP = PEEK_W + GAP;
 const DRAG_THRESHOLD = 60;
+const CARD_H = 560;
 
 
 function BrandLogo() {
@@ -51,21 +52,34 @@ function ReadMore() {
 function CarouselCard({
   slide,
   isActive,
+  offset,
   onSelect,
 }: {
   slide: Slide;
   isActive: boolean;
+  offset: number;
   onSelect: () => void;
 }) {
+  const isLeft = offset < 0;
+  const rotateY = isActive ? 0 : isLeft ? 16 : -16;
+  const translateZ = isActive ? 60 : -90;
+
   return (
     <button
       type="button"
       onClick={onSelect}
-      className="group relative h-full shrink-0 overflow-hidden rounded-[18px] text-left focus:outline-none"
+      className="group relative shrink-0 overflow-hidden rounded-[22px] text-left focus:outline-none"
       style={{
+        height: CARD_H,
         width: isActive ? ACTIVE_W : PEEK_W,
-        transition: 'width 0.6s cubic-bezier(0.65, 0, 0.2, 1)',
-        boxShadow: '0 30px 60px -25px rgba(8, 47, 50, 0.55)',
+        transformOrigin: 'center center',
+        transform: `translateZ(${translateZ}px) rotateY(${rotateY}deg)`,
+        transition:
+          'width 0.6s cubic-bezier(0.65, 0, 0.2, 1), transform 0.6s cubic-bezier(0.65, 0, 0.2, 1), box-shadow 0.6s cubic-bezier(0.65, 0, 0.2, 1)',
+        boxShadow: isActive
+          ? '0 45px 90px -30px rgba(6, 22, 24, 0.75)'
+          : '0 20px 50px -28px rgba(8, 47, 50, 0.4)',
+        opacity: isActive ? 1 : 0.9,
       }}
     >
       <img
@@ -187,13 +201,13 @@ export default function MediaCarouselSection() {
     <section
       id="media-carousel"
       aria-label="Media carousel"
-      className="relative flex flex-col items-center justify-center overflow-hidden px-6 py-16"
+      className="relative flex flex-col items-center justify-center overflow-hidden px-6 py-6"
       style={{ background: 'linear-gradient(180deg, #1A2235 0%, #111729 100%)' }}
     >
       <div className="pointer-events-none absolute right-[-128px] top-10 h-[26rem] w-[26rem] rounded-full bg-[#404D74]/15 blur-[120px]" />
       <div className="pointer-events-none absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-[#CEBEA6]/[0.08] blur-[140px]" />
-      <div className="relative w-full max-w-[900px]">
-        <div className="mb-14 max-w-2xl">
+      <div className="relative w-full max-w-[1200px]">
+        <div className="mb-8 max-w-2xl">
           <p className="mb-4 text-sm font-medium uppercase tracking-widest text-[#CEBEA6]/80">
             Depoimentos
           </p>
@@ -207,12 +221,16 @@ export default function MediaCarouselSection() {
           </p>
         </div>
       </div>
-      <div className="relative w-full max-w-[900px]">
-        <div className="relative overflow-hidden" style={{ height: 480 }}>
+      <div className="relative w-full max-w-[1200px]">
+        <div
+          className="relative overflow-hidden"
+          style={{ height: CARD_H + 90, perspective: 1600, perspectiveOrigin: '35% 50%' }}
+        >
           <div
-            className="flex h-full will-change-transform"
+            className="flex h-full items-center will-change-transform"
             style={{
               gap: GAP,
+              transformStyle: 'preserve-3d',
               transform: `translateX(${translateX}px)`,
               transition: dragging ? 'none' : 'transform 0.6s cubic-bezier(0.65, 0, 0.2, 1)',
               cursor: dragging ? 'grabbing' : 'grab',
@@ -229,6 +247,7 @@ export default function MediaCarouselSection() {
                 key={slide.id}
                 slide={slide}
                 isActive={index === active}
+                offset={index - active}
                 onSelect={() => handleSelect(index)}
               />
             ))}
