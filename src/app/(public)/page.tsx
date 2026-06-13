@@ -6,7 +6,6 @@ import VeltenStats from '../../components/velten_stats';
 import VideoSection from '../../components/video_section';
 import DiagnosticoSection from '../../components/diagnostico_section';
 import ServicosSection from '../../components/servicos_section';
-import DepoimentosSection from '../../components/depoimentos_section';
 import PlataformaSection from '../../components/plataforma_section';
 import PageFooter from '../../components/page_footer';
 import AceleradorSection from '../../components/acelerador_section';
@@ -81,9 +80,8 @@ export default function Home() {
       <DiagnosticoSection />
       
       <ServicosSection />
-      <MediaCarouselSection />
-      <DepoimentosSection />
       <AceleradorSection />
+      <MediaCarouselSection />
       <PlataformaSection />
       
       <PageFooter />

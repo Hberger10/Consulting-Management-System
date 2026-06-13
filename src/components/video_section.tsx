@@ -43,13 +43,13 @@ export default function VideoSection() {
           {!playing ? (
             <>
               
-              <span
-                className="absolute inset-0 transition-transform duration-700 group-hover:scale-[1.03]"
-                style={{
-                  background:
-                    'radial-gradient(120% 100% at 50% 0%, rgba(64,77,116,0.55) 0%, rgba(17,23,41,0) 55%), linear-gradient(160deg,#1A2235 0%,#0B0F1A 100%)',
-                }}
+              <img
+                src="/image/capa.jpg"
+                alt="Capa do vídeo da Velten"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                draggable={false}
               />
+              <span className="absolute inset-0 bg-[#0B0F1A]/30" />
               <span className="absolute inset-0 bg-gradient-to-t from-[#0B0F1A]/55 via-transparent to-transparent" />
 
               <span className="absolute left-1/2 top-1/2 h-[92px] w-[92px] -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full border border-[#CEBEA6]/40 motion-reduce:hidden" />
