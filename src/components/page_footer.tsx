@@ -65,11 +65,11 @@ export default function PageFooter() {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-[#CEBEA6]/70" strokeWidth={1.75} />
-                veltenconsultoria@gmail.com
+                consultoriavelten@gmail.com
               </li>
               <li className="flex items-center gap-2">
                 <AtSign className="h-4 w-4 text-[#CEBEA6]/70" strokeWidth={1.75} />
-                veltenconsultoriaetreinamentos
+                veltenconsultoriaempresarial
               </li>
             </ul>
           </div>

@@ -10,6 +10,7 @@ import PlataformaSection from '../../components/plataforma_section';
 import PageFooter from '../../components/page_footer';
 import AceleradorSection from '../../components/acelerador_section';
 import MediaCarouselSection from '../../components/carousel_section';
+import CulturaSection from '../../components/cultura_section';
 
 export default function Home() {
   return (
@@ -83,7 +84,8 @@ export default function Home() {
       <AceleradorSection />
       <MediaCarouselSection />
       <PlataformaSection />
-      
+      <CulturaSection />
+
       <PageFooter />
     </div>
   );

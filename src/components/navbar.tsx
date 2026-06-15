@@ -9,6 +9,7 @@ const navLinks = [
   { label: 'Pilares', href: '#servicos' },
   { label: 'Método', href: '#metodo' },
   { label: 'Plataforma', href: '#plataforma' },
+  { label: 'Cultura', href: '#cultura' },
 ];
 
 export default function Navbar() {
