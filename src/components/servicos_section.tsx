@@ -7,7 +7,7 @@ export default function ServicosSection() {
       aria-label="Serviços"
       className="relative bg-gradient-to-b from-[#111729] to-[#1A2235] py-24 lg:py-28"
     >
-      <div id="metodo" className="absolute -top-20" aria-hidden="true" />
+      <div id="Serviços" className="absolute -top-20" aria-hidden="true" />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mb-14 max-w-2xl">
           <p className="mb-4 text-sm font-medium uppercase tracking-widest text-[#CEBEA6]/80">

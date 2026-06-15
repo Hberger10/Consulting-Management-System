@@ -24,8 +24,10 @@ const pillars: Pillar[] = [
 
 export default function AceleradorSection() {
   return (
+    
     <section
       aria-label="Método Velten"
+      id='metodo'
       className="relative overflow-hidden bg-[#0A0F1E] py-24 lg:py-32"
     >
       <div className="pointer-events-none absolute -bottom-24 -left-24 h-[28rem] w-[28rem] rounded-full bg-[#404D74]/20 blur-[150px]" />
