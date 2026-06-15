@@ -12,7 +12,7 @@ export default function PageFooter() {
                 V
               </span>
               <span className="font-serif text-xl font-bold tracking-[0.18em] text-[#FCFBF8]">
-                VELTEN
+                ELTEN
               </span>
             </div>
             <p className="max-w-sm text-sm leading-relaxed text-[#F6F1F1]/50">
