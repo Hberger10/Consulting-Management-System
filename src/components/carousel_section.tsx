@@ -11,11 +11,11 @@ type Slide = {
 
 
 const SLIDES: Slide[] = [
-  { id: 1, title: 'Tiptoe Simplicity with Honolua Blomfield', time: '5 mins ago', image: '/image/consultoria1.jpg' },
-  { id: 2, title: 'Ocean Wave of the Decade Contender', time: '35 mins ago', image: '/image/consultoria2.jpg' },
-  { id: 3, title: 'Board Review: John John Florence and Jon Pyzel', time: '1 hour ago', image: '/image/consultoria3.jpg' },
-  { id: 4, title: 'Ultimate Guide to Understanding Neoprene', time: 'Yesterday', image: '/image/consultoria1.jpg' },
-  { id: 5, title: 'Best Beaches for Beginner Surfers', time: '2 days ago', image: '/image/consultoria2.jpg' },
+  { id: 1, title: '...', time: '5 mins ago', image: '/image/consultoria1.jpg' },
+  { id: 2, title: '...', time: '35 mins ago', image: '/image/consultoria2.jpg' },
+  { id: 3, title: '...', time: '1 hour ago', image: '/image/consultoria3.jpg' },
+  { id: 4, title: '...', time: 'Yesterday', image: '/image/consultoria1.jpg' },
+  { id: 5, title: '...', time: '2 days ago', image: '/image/consultoria2.jpg' },
 ];
 
 const DURATION = 5000;
@@ -27,8 +27,7 @@ const STEP = PEEK_W + GAP;
 const DRAG_THRESHOLD = 60;
 const CARD_H = 560;
 
-// Clones dos primeiros cards anexados ao fim para o loop infinito.
-// Precisa cobrir os "peeks" visíveis à direita do card ativo.
+
 const CLONES = 3;
 const RENDER_SLIDES: Slide[] = [...SLIDES, ...SLIDES.slice(0, CLONES)];
 
@@ -37,7 +36,7 @@ function BrandLogo() {
   return (
     <div className="absolute left-5 top-5 flex h-[38px] items-center gap-2.5 rounded-[10px] bg-white/95 px-[15px] shadow-[0_6px_18px_rgba(0,0,0,0.18)]">
       <span className="h-[18px] w-[18px] rounded-[5px] bg-gradient-to-br from-[#CEBEA6] to-[#A88F6E]" />
-      <span className="text-sm font-extrabold tracking-tight text-[#13201f]">SUA LOGO</span>
+      <span className="text-sm font-extrabold tracking-tight text-[#13201f]"> LOGO</span>
     </div>
   );
 }
@@ -142,8 +141,7 @@ export default function MediaCarouselSection() {
     };
   }, [active, dragging]);
 
-  // Loop infinito: ao chegar no clone do primeiro card, deixa a animação
-  // terminar e então reseta instantaneamente (sem transição) para o card real.
+
   useEffect(() => {
     if (active !== SLIDES.length) return;
     const id = window.setTimeout(() => {
@@ -153,7 +151,7 @@ export default function MediaCarouselSection() {
     return () => window.clearTimeout(id);
   }, [active]);
 
-  // Reabilita a transição após o navegador pintar a posição resetada.
+  
   useEffect(() => {
     if (!noTransition) return;
     const raf = requestAnimationFrame(() => {
