@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
 type Stat = {
@@ -104,6 +105,18 @@ export default function VeltenStats() {
           {stats.map((stat) => (
             <StatItem key={stat.label} stat={stat} start={inView} />
           ))}
+        </div>
+
+        <div className="mt-14 flex justify-center">
+          <Link
+            href="/cultura"
+            className="group inline-flex items-center gap-1.5 text-sm text-neutral-400 transition-colors duration-200 hover:text-[#C5A880]"
+          >
+            Conheça o método e os pilares por trás dos nossos resultados
+            <span className="transition-transform duration-200 group-hover:translate-x-1">
+              →
+            </span>
+          </Link>
         </div>
       </div>
     </section>

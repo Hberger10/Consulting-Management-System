@@ -43,6 +43,11 @@ export default function PageFooter() {
                 </a>
               </li>
               <li>
+                <Link href="/cultura" className="transition-colors hover:text-[#CEBEA6]">
+                  Nossa Cultura
+                </Link>
+              </li>
+              <li>
                 <Link href="/login" className="transition-colors hover:text-[#CEBEA6]">
                   Área do Cliente
                 </Link>

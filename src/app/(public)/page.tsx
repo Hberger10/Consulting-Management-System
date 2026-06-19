@@ -81,6 +81,25 @@ export default function Home() {
       <DiagnosticoSection />
       
       <ServicosSection />
+
+      <section className="bg-neutral-950 py-16 border-y border-neutral-900 text-center">
+        <span className="text-xs tracking-[0.2em] text-[#C5A880] uppercase block mb-3">
+          Nosso Propósito
+        </span>
+        <h2 className="text-2xl md:text-3xl font-serif text-white leading-relaxed mb-6 max-w-4xl mx-auto px-4">
+          Porque o sucesso das empresas nasce do potencial das pessoas.
+        </h2>
+        <Link
+          href="/cultura"
+          className="inline-flex items-center text-sm text-neutral-400 hover:text-[#C5A880] transition-colors duration-200 group"
+        >
+          Entenda nossa cultura de excelência
+          <span className="ml-1 transform group-hover:translate-x-1 transition-transform">
+            →
+          </span>
+        </Link>
+      </section>
+
       <AceleradorSection />
       <MediaCarouselSection />
       <PlataformaSection />
