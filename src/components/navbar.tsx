@@ -9,7 +9,7 @@ const navLinks = [
   { label: 'Pilares', href: '#servicos' },
   { label: 'Método', href: '#metodo' },
   { label: 'Plataforma', href: '#plataforma' },
-  { label: 'Cultura', href: '#cultura' },
+  { label: 'Cultura', href: '/cultura' },
 ];
 
 export default function Navbar() {
@@ -78,16 +78,27 @@ export default function Navbar() {
 </Link>
 
             <div className="hidden items-center gap-9 text-sm font-medium text-[#F6F1F1]/70 md:flex">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => handleAnchor(e, link.href)}
-                  className="transition-colors hover:text-[#CEBEA6]"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {navLinks.map((link) =>
+                link.href.startsWith('#') ? (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={(e) => handleAnchor(e, link.href)}
+                    className="transition-colors hover:text-[#CEBEA6]"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="transition-colors hover:text-[#CEBEA6]"
+                  >
+                    {link.label}
+                  </Link>
+                ),
+              )}
             </div>
 
             <div className="hidden items-center gap-6 md:flex">
@@ -130,16 +141,27 @@ export default function Navbar() {
         }`}
       >
         <div className="flex flex-col gap-1 px-6 py-6 text-base font-medium">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={(e) => handleAnchor(e, link.href)}
-              className="border-b border-white/5 py-3 text-[#F6F1F1]/80 transition-colors hover:text-[#CEBEA6]"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.href.startsWith('#') ? (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => handleAnchor(e, link.href)}
+                className="border-b border-white/5 py-3 text-[#F6F1F1]/80 transition-colors hover:text-[#CEBEA6]"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="border-b border-white/5 py-3 text-[#F6F1F1]/80 transition-colors hover:text-[#CEBEA6]"
+              >
+                {link.label}
+              </Link>
+            ),
+          )}
           <Link
             href="/login"
             onClick={() => setOpen(false)}
