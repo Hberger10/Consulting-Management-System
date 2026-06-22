@@ -19,8 +19,6 @@ export default function VideoSection() {
       <div className="pointer-events-none absolute left-1/2 top-[8%] h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-[#404D74]/15 blur-[140px]" />
 
       <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
-        
-
         <h2
           className="text-center text-4xl font-bold leading-[1.08] tracking-tight text-[#FCFBF8] [text-wrap:balance] lg:text-6xl"
           style={serif}
@@ -42,7 +40,6 @@ export default function VideoSection() {
         >
           {!playing ? (
             <>
-              
               <img
                 src="/image/capa.jpg"
                 alt="Capa do vídeo da Velten"

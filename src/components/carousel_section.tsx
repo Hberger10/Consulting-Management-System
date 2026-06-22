@@ -17,8 +17,9 @@ const SLIDES: Slide[] = [
   { id: 1, title: 'Estruturamos processos e ganhamos previsibilidade para crescer com método.', time: '5 mins ago', image: '/image/consultoria1.jpg', logo: '/image/maisestudio.jpg', company: 'Mais Studio' },
   { id: 2, title: '...', time: '35 mins ago', image: '/image/consultoria2.jpg', logo: '/image/iluminacao.jpg', logoScale: 1.6, company: 'Dragão Iluminação' },
   { id: 3, title: '...', time: '1 hour ago', image: '/image/consultoria3.jpg', logo: '/image/material.jpg', company: 'Material' },
-  { id: 4, title: '...', time: 'Yesterday', image: '/image/consultoria1.jpg' },
-  { id: 5, title: '...', time: '2 days ago', image: '/image/consultoria2.jpg' },
+  { id: 4, title: '...', time: 'Yesterday', image: '/image/consultoria1.jpg', logo: '/image/maisestudio.jpg', company: 'Mais Studio' },
+  { id: 5, title: '...', time: '2 days ago', image: '/image/consultoria2.jpg', logo: '/image/iluminacao.jpg', logoScale: 1.6, company: 'Dragão Iluminação' },
+  { id: 6, title: '...', time: '3 days ago', image: '/image/consultoria3.jpg', logo: '/image/material.jpg', company: 'Material' },
 ];
 
 const DURATION = 5000;

@@ -1,82 +1,6 @@
-'use client';
-
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
-
-type Stat = {
-  target: number;
-  suffix?: string;
-  label: string;
-};
-
-
-
-function useCountUp(target: number, start: boolean, duration = 1600) {
-  const [value, setValue] = useState(0);
-
-  useEffect(() => {
-    if (!start) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setValue(target);
-      return;
-    }
-    let raf = 0;
-    const t0 = performance.now();
-    const tick = (now: number) => {
-      const p = Math.min((now - t0) / duration, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      setValue(Math.round(eased * target));
-      if (p < 1) raf = requestAnimationFrame(tick);
-      else setValue(target);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [target, start, duration]);
-
-  return value;
-}
-
-function StatItem({ stat, start }: { stat: Stat; start: boolean }) {
-  const value = useCountUp(stat.target, start);
-  return (
-    <div className="flex gap-5">
-      <span className="mt-2 block h-16 w-1 shrink-0 -skew-x-12 bg-gradient-to-b from-[#CEBEA6] to-[#EFE5D9]" />
-      <div>
-        <p className="font-serif text-5xl font-bold leading-none text-[#FCFBF8] lg:text-6xl">
-          <span className="text-[#CEBEA6]">+</span>
-          {value.toLocaleString('pt-BR')}
-          {stat.suffix && <span className="text-[#FCFBF8]">{stat.suffix}</span>}
-        </p>
-        <p className="mt-4 max-w-[14rem] text-base leading-relaxed text-[#F6F1F1]/65">
-          {stat.label}
-        </p>
-      </div>
-    </div>
-  );
-}
 
 export default function VeltenStats() {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setInView(true);
-            io.disconnect();
-          }
-        });
-      },
-      { threshold: 0.4 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
   return (
     <section aria-label="Estatísticas da Velten" className="relative overflow-hidden bg-[#0B0F1A] py-24 lg:py-32">
       <div className="pointer-events-none absolute inset-0">
@@ -96,8 +20,6 @@ export default function VeltenStats() {
           <span className="italic text-[#CEBEA6]">estruturando</span> o
           empreendedorismo no Brasil.
         </h2>
-
-        
 
         <div className="mt-14 flex justify-center">
           <Link
