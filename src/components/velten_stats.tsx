@@ -9,11 +9,7 @@ type Stat = {
   label: string;
 };
 
-const stats: Stat[] = [
-  { target: 120, label: 'Empresas estruturadas em todo o Brasil.' },
-  { target: 900, label: 'Processos mapeados e implementados.' },
-  { target: 20, suffix: ' mil', label: 'Horas de consultoria e mentoria aplicadas.' },
-];
+
 
 function useCountUp(target: number, start: boolean, duration = 1600) {
   const [value, setValue] = useState(0);
@@ -101,11 +97,7 @@ export default function VeltenStats() {
           empreendedorismo no Brasil.
         </h2>
 
-        <div ref={ref} className="mt-16 grid max-w-4xl gap-12 sm:grid-cols-3">
-          {stats.map((stat) => (
-            <StatItem key={stat.label} stat={stat} start={inView} />
-          ))}
-        </div>
+        
 
         <div className="mt-14 flex justify-center">
           <Link

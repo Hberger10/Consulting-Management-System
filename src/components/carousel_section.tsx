@@ -7,13 +7,16 @@ type Slide = {
   title: string;
   time: string;
   image: string;
+  logo?: string;
+  logoScale?: number;
+  company?: string;
 };
 
 
 const SLIDES: Slide[] = [
-  { id: 1, title: '...', time: '5 mins ago', image: '/image/consultoria1.jpg' },
-  { id: 2, title: '...', time: '35 mins ago', image: '/image/consultoria2.jpg' },
-  { id: 3, title: '...', time: '1 hour ago', image: '/image/consultoria3.jpg' },
+  { id: 1, title: 'Estruturamos processos e ganhamos previsibilidade para crescer com método.', time: '5 mins ago', image: '/image/consultoria1.jpg', logo: '/image/maisestudio.jpg', company: 'Mais Studio' },
+  { id: 2, title: '...', time: '35 mins ago', image: '/image/consultoria2.jpg', logo: '/image/iluminacao.jpg', logoScale: 1.6, company: 'Dragão Iluminação' },
+  { id: 3, title: '...', time: '1 hour ago', image: '/image/consultoria3.jpg', logo: '/image/material.jpg', company: 'Material' },
   { id: 4, title: '...', time: 'Yesterday', image: '/image/consultoria1.jpg' },
   { id: 5, title: '...', time: '2 days ago', image: '/image/consultoria2.jpg' },
 ];
@@ -32,7 +35,21 @@ const CLONES = 3;
 const RENDER_SLIDES: Slide[] = [...SLIDES, ...SLIDES.slice(0, CLONES)];
 
 
-function BrandLogo() {
+function BrandLogo({ logo, logoScale = 1 }: { logo?: string; logoScale?: number }) {
+  if (logo) {
+    return (
+      <div className="absolute left-5 top-5 flex h-[38px] items-center overflow-hidden rounded-[10px] bg-white/95 px-[15px] shadow-[0_6px_18px_rgba(0,0,0,0.18)]">
+        <img
+          src={logo}
+          alt=""
+          className="h-[22px] w-auto object-contain"
+          style={{ transform: `scale(${logoScale})`, transformOrigin: 'left center' }}
+          draggable={false}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="absolute left-5 top-5 flex h-[38px] items-center gap-2.5 rounded-[10px] bg-white/95 px-[15px] shadow-[0_6px_18px_rgba(0,0,0,0.18)]">
       <span className="h-[18px] w-[18px] rounded-[5px] bg-gradient-to-br from-[#CEBEA6] to-[#A88F6E]" />
@@ -90,7 +107,7 @@ function CarouselCard({
             'linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 35%, rgba(8,30,32,0.35) 65%, rgba(6,22,24,0.82) 100%)',
         }}
       />
-      <BrandLogo />
+      <BrandLogo logo={slide.logo} logoScale={slide.logoScale} />
       <div className="absolute inset-x-0 bottom-0 p-6">
         <h3
           className="font-extrabold text-white"
@@ -104,6 +121,11 @@ function CarouselCard({
         >
           {slide.title}
         </h3>
+        {slide.company && (
+          <p className="mt-2 text-sm font-semibold uppercase tracking-widest text-[#CEBEA6]">
+            {slide.company}
+          </p>
+        )}
       </div>
     </button>
   );

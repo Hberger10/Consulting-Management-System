@@ -104,7 +104,6 @@ export default function Home() {
       <MediaCarouselSection />
       <PlataformaSection />
       <CulturaSection />
-
       <PageFooter />
     </div>
   );

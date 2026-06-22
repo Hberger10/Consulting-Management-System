@@ -60,10 +60,7 @@ export default function PageFooter() {
               Contato
             </p>
             <ul className="space-y-2.5 text-sm text-[#F6F1F1]/60">
-              <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-[#CEBEA6]/70" strokeWidth={1.75} />
-                contato@velten.com.br
-              </li>
+              
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-[#CEBEA6]/70" strokeWidth={1.75} />
                 +55 (27) 99533-1354
